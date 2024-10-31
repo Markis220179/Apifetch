@@ -57,3 +57,32 @@ async function getPokemon() {
 }
 
 getPokemon();
+
+
+async function getSimpson() {
+  const response = await fetch('https://thesimpsonsquoteapi.glitch.me/quotes?count=6');
+  const data = await response.json();
+  const simpsons = data;
+
+  for (let index = 0; index < simpsons.length; index++) {
+    const simpson = simpsons[index];
+
+    
+    const response2 = await fetch('https://thesimpsonsquoteapi.glitch.me/quotes?count=1');
+    const data2 = await response2.json();
+  
+    const simpsons2 = {
+      frase: data2[0].quote,
+      personaje: data2[0].character,
+      imagen: data2[0].image,
+      DireccionMirada: data2[0].characterDirection,
+    };
+
+    if (simpsons2.DireccionMirada === 'Right') {
+      console.log('Son personajes derechos');
+      console.log(simpsons2); 
+    }
+  }
+}
+
+getSimpson();
